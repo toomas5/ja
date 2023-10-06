@@ -15,7 +15,7 @@ public class h8_2 {
         ee.vanus();
         ee.riik();
         System.out.println("");
-        ;
+        
         h822 arb = new h822("tööl", "Aruba", "avamerel", "ülejäänud meeskonnaga");
         arb.mis();
         arb.kus();

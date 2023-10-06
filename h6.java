@@ -4,8 +4,10 @@
  Ülesanne6
  */
 
-import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,9 +17,9 @@ public class h6 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Integer> a = new ArrayList<>();
-
+        File andmed = new File("andmed.txt");
         while (true) {
-            System.out.print("täisarvud: (tühi lõpetab)");
+            System.out.print("täisarvud: (tühi lõpetab) ");
             String sisend = scanner.nextLine();
             if (sisend.isEmpty()) {
                 break;
@@ -32,11 +34,11 @@ public class h6 {
         if (!a.isEmpty()) {
             int s = a.stream().mapToInt(Integer::intValue).sum();
             double k = a.stream().mapToInt(Integer::intValue).average().orElse(0.0);
-            try (PrintWriter kk = new PrintWriter("andmed.txt")) {
-                kk.println("Sisestatud arvud:");
+            try (PrintWriter kk = new PrintWriter(new FileWriter(andmed))) {
+                kk.write("Sisestatud arvud: \n");
                 a.forEach(kk::println);
-                kk.println("summa: " + s);
-                kk.println("keskmine: " + k);
+                kk.write("summa: " + s + "\n");
+                kk.write("keskmine: " + k);
                 System.out.println("salvestatud");
             } catch (IOException e) {
                 System.out.println("viga");
